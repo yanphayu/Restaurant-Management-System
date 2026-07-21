@@ -122,12 +122,12 @@ include __DIR__ . '/../layouts/header.php';
 <?php include __DIR__ . '/../layouts/footer.php'; ?>
 
 <script>
-    document.getElementById('categoryCreateForm').addEventListener('submit', function(e) {
+    $('#categoryCreateForm').on('submit', function(e) {
         e.preventDefault();
         createCategory();
     });
 
-    document.getElementById('categoryEditForm').addEventListener('submit', function(e) {
+    $('#categoryEditForm').on('submit', function(e) {
         e.preventDefault();
         saveCategory();
     });

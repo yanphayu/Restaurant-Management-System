@@ -16,13 +16,11 @@
 
     <script src="<?= $prefix ?>assets/js/modal.js"></script>
     <script>
-        document.addEventListener('click', function(e) {
-            var target = e.target.closest('[data-action]');
-            if (!target) return;
-            var action = target.getAttribute('data-action');
+        $(document).on('click', '[data-action]', function(e) {
+            var action = $(this).data('action');
             if (action === 'close-modal') closeModal();
             else if (action === 'close-modal-backdrop') closeModal();
-            else if (action === 'open-modal') openModal(target.getAttribute('data-target'));
+            else if (action === 'open-modal') openModal($(this).data('target'));
         });
     </script>
 </body>

@@ -1,33 +1,30 @@
 function openModal(id) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    el.classList.remove('hidden');
-    el.classList.add('modal-overlay-visible');
-    document.body.style.overflow = 'hidden';
-    var content = el.querySelector('.modal-content');
-    if (content) {
+    var $el = $('#' + id);
+    if (!$el.length) return;
+    $el.removeClass('hidden').addClass('modal-overlay-visible');
+    $('body').css('overflow', 'hidden');
+    var $content = $el.find('.modal-content');
+    if ($content.length) {
         requestAnimationFrame(function() {
-            content.classList.remove('modal-enter');
-            content.classList.add('modal-enter-active');
+            $content.removeClass('modal-enter').addClass('modal-enter-active');
         });
     }
 }
 
 function closeModal() {
-    document.querySelectorAll('.modal-overlay-visible').forEach(function(el) {
-        var content = el.querySelector('.modal-content');
-        if (content) {
-            content.classList.add('modal-enter');
-            content.classList.remove('modal-enter-active');
+    $('.modal-overlay-visible').each(function() {
+        var $el = $(this);
+        var $content = $el.find('.modal-content');
+        if ($content.length) {
+            $content.addClass('modal-enter').removeClass('modal-enter-active');
         }
         setTimeout(function() {
-            el.classList.add('hidden');
-            el.classList.remove('modal-overlay-visible');
+            $el.addClass('hidden').removeClass('modal-overlay-visible');
         }, 200);
     });
-    document.body.style.overflow = '';
+    $('body').css('overflow', '');
 }
 
-document.addEventListener('keydown', function(e) {
+$(document).on('keydown', function(e) {
     if (e.key === 'Escape') closeModal();
 });

@@ -14,6 +14,7 @@ $prefix = str_repeat('../', $pageDepth);
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet">
     <link rel="stylesheet" href="<?= $prefix ?>assets/css/style.css?v=<?= @filemtime(__DIR__ . '/../../assets/css/style.css') ?>">
+    <script src="<?= $prefix ?>jquery/dist/jquery.min.js"></script>
 </head>
 <body class="min-h-screen bg-surface font-body-md text-on-surface">
 

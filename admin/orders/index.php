@@ -95,10 +95,7 @@ include __DIR__ . '/../layouts/header.php';
 <?php include __DIR__ . '/../layouts/footer.php'; ?>
 
 <script>
-    document.addEventListener('click', function(e) {
-        var target = e.target.closest('[data-action]');
-        if (!target) return;
-        var action = target.getAttribute('data-action');
-        if (action === 'print-receipt') window.print();
+    $(document).on('click', '[data-action="print-receipt"]', function() {
+        window.print();
     });
 </script>

@@ -85,7 +85,7 @@ include __DIR__ . '/../layouts/header.php';
 <?php include __DIR__ . '/../layouts/footer.php'; ?>
 
 <script>
-    document.getElementById('orderForm').addEventListener('submit', function(e) {
+    $('#orderForm').on('submit', function(e) {
         e.preventDefault();
         submitOrder();
     });

@@ -144,32 +144,32 @@ include __DIR__ . '/../layouts/header.php';
 <?php include __DIR__ . '/../layouts/footer.php'; ?>
 
 <script>
-    document.getElementById('tableCreateForm').addEventListener('submit', function(e) {
+    $('#tableCreateForm').on('submit', function(e) {
         e.preventDefault();
         saveTable();
     });
 
-    document.getElementById('tableEditForm').addEventListener('submit', function(e) {
+    $('#tableEditForm').on('submit', function(e) {
         e.preventDefault();
         saveTable();
     });
 
-    document.getElementById('addTableBtn').addEventListener('click', function() {
+    $('#addTableBtn').on('click', function() {
         openModal('modal-table-create');
     });
 
     function updateTablePreview() {
-        document.getElementById('editTablePreviewName').textContent = document.getElementById('editTableName').value || 'Table';
-        document.getElementById('editTablePreviewCap').textContent = document.getElementById('editTableCapacity').value || '0';
-        var st = document.getElementById('editTableStatus').value;
+        $('#editTablePreviewName').text($('#editTableName').val() || 'Table');
+        $('#editTablePreviewCap').text($('#editTableCapacity').val() || '0');
+        var st = $('#editTableStatus').val();
         var sm = {available:{l:'Available',c:'bg-success-container text-on-success-container'},occupied:{l:'Occupied',c:'bg-error-container text-on-error-container'},reserved:{l:'Reserved',c:'bg-tertiary-container text-on-tertiary-container'}};
         var s = sm[st] || sm.available;
-        var badge = document.getElementById('editTablePreviewStatus');
-        badge.textContent = s.l;
-        badge.className = 'inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold ' + s.c;
+        var badge = $('#editTablePreviewStatus');
+        badge.text(s.l);
+        badge.attr('class', 'inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold ' + s.c);
     }
 
-    document.getElementById('editTableName').addEventListener('input', updateTablePreview);
-    document.getElementById('editTableCapacity').addEventListener('input', updateTablePreview);
-    document.getElementById('editTableStatus').addEventListener('change', updateTablePreview);
+    $('#editTableName').on('input', updateTablePreview);
+    $('#editTableCapacity').on('input', updateTablePreview);
+    $('#editTableStatus').on('change', updateTablePreview);
 </script>

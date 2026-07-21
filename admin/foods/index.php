@@ -235,60 +235,57 @@ include __DIR__ . '/../layouts/header.php';
 <?php include __DIR__ . '/../layouts/footer.php'; ?>
 
 <script>
-    document.getElementById('foodCreateForm').addEventListener('submit', function(e) {
+    $('#foodCreateForm').on('submit', function(e) {
         e.preventDefault();
         createFood();
     });
 
-    document.getElementById('foodEditForm').addEventListener('submit', function(e) {
+    $('#foodEditForm').on('submit', function(e) {
         e.preventDefault();
         saveFood();
     });
 
-    document.getElementById('createImageUploadArea').addEventListener('click', function() {
-        document.getElementById('createFoodImage').click();
+    $('#createImageUploadArea').on('click', function() {
+        $('#createFoodImage').trigger('click');
     });
-    document.getElementById('createFoodImage').addEventListener('change', function(e) {
+    $('#createFoodImage').on('change', function(e) {
         var file = e.target.files[0];
         if (file) {
             var reader = new FileReader();
             reader.onload = function(ev) {
-                document.getElementById('createPreviewImg').src = ev.target.result;
-                document.getElementById('createImagePreview').classList.remove('hidden');
-                document.getElementById('createImageUploadArea').classList.add('hidden');
+                $('#createPreviewImg').attr('src', ev.target.result);
+                $('#createImagePreview').removeClass('hidden');
+                $('#createImageUploadArea').addClass('hidden');
             };
             reader.readAsDataURL(file);
         }
     });
 
-    document.getElementById('editImageUploadArea').addEventListener('click', function() {
-        document.getElementById('editFoodImage').click();
+    $('#editImageUploadArea').on('click', function() {
+        $('#editFoodImage').trigger('click');
     });
-    document.getElementById('editFoodImage').addEventListener('change', function(e) {
+    $('#editFoodImage').on('change', function(e) {
         var file = e.target.files[0];
         if (file) {
             var reader = new FileReader();
             reader.onload = function(ev) {
-                document.getElementById('editPreviewImg').src = ev.target.result;
-                document.getElementById('editImagePreview').classList.remove('hidden');
-                document.getElementById('editImageUploadArea').classList.add('hidden');
+                $('#editPreviewImg').attr('src', ev.target.result);
+                $('#editImagePreview').removeClass('hidden');
+                $('#editImageUploadArea').addClass('hidden');
             };
             reader.readAsDataURL(file);
         }
     });
 
-    document.addEventListener('click', function(e) {
-        var target = e.target.closest('[data-action]');
-        if (!target) return;
-        var action = target.getAttribute('data-action');
-        if (action === 'clear-create-image') {
-            document.getElementById('createFoodImage').value = '';
-            document.getElementById('createImagePreview').classList.add('hidden');
-            document.getElementById('createImageUploadArea').classList.remove('hidden');
-        } else if (action === 'clear-edit-image') {
-            document.getElementById('editFoodImage').value = '';
-            document.getElementById('editImagePreview').classList.add('hidden');
-            document.getElementById('editImageUploadArea').classList.remove('hidden');
-        }
+    $(document).on('click', '[data-action="clear-create-image"]', function() {
+        $('#createFoodImage').val('');
+        $('#createImagePreview').addClass('hidden');
+        $('#createImageUploadArea').removeClass('hidden');
+    });
+
+    $(document).on('click', '[data-action="clear-edit-image"]', function() {
+        $('#editFoodImage').val('');
+        $('#editImagePreview').addClass('hidden');
+        $('#editImageUploadArea').removeClass('hidden');
     });
 </script>
