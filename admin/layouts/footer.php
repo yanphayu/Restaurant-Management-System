@@ -31,7 +31,7 @@
                 }).then(function(result) {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: '/api/auth.php',
+                            url: '/auth/auth.php',
                             method: 'POST',
                             data: { action: 'logout' },
                             dataType: 'json',

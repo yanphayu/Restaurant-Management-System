@@ -6,7 +6,7 @@ $(document).ready(function() {
         $btn.prop('disabled', true).text('Signing in...');
 
         $.ajax({
-            url: '/api/auth.php',
+            url: '/auth/auth.php',
             method: 'POST',
             data: {
                 action: 'login',
@@ -43,7 +43,7 @@ $(document).ready(function() {
         $btn.prop('disabled', true).text('Creating account...');
 
         $.ajax({
-            url: '/api/auth.php',
+            url: '/auth/auth.php',
             method: 'POST',
             data: {
                 action: 'register',
