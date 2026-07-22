@@ -53,6 +53,7 @@ include __DIR__ . '/../layouts/header.php';
         <table class="w-full text-left">
             <thead>
                 <tr class="border-b border-outline-variant bg-surface-container">
+                    <th class="px-6 py-4 font-semibold text-on-surface-variant text-sm">Image</th>
                     <th class="px-6 py-4 font-semibold text-on-surface-variant text-sm">Food</th>
                     <th class="px-6 py-4 font-semibold text-on-surface-variant text-sm">Category</th>
                     <th class="px-6 py-4 font-semibold text-on-surface-variant text-sm">Price</th>
@@ -62,7 +63,7 @@ include __DIR__ . '/../layouts/header.php';
             </thead>
             <tbody id="foodsTableBody" class="divide-y divide-outline-variant">
                 <tr>
-                    <td colspan="5" class="px-6 py-12 text-center text-on-surface-variant">Loading foods...</td>
+                    <td colspan="6" class="px-6 py-12 text-center text-on-surface-variant">Loading foods...</td>
                 </tr>
             </tbody>
         </table>
@@ -131,8 +132,8 @@ include __DIR__ . '/../layouts/header.php';
                     <span class="material-symbols-outlined text-[40px] text-on-surface-variant mb-2">cloud_upload</span>
                     <p class="text-body-md text-on-surface-variant">Click to upload or drag and drop</p>
                     <p class="text-body-sm text-on-surface-variant mt-1">PNG, JPG up to 5MB</p>
-                    <input type="file" id="createFoodImage" accept="image/*" class="hidden">
                 </div>
+                <input type="file" id="createFoodImage" accept="image/*" style="position:absolute;left:-9999px;">
                 <div id="createImagePreview" class="hidden mt-3 relative">
                     <img id="createPreviewImg" class="w-full h-40 object-cover rounded-lg" alt="Preview">
                     <button type="button" data-action="clear-create-image" class="absolute top-2 right-2 w-7 h-7 rounded-full bg-error flex items-center justify-center text-on-error">
@@ -210,8 +211,8 @@ include __DIR__ . '/../layouts/header.php';
                     <span class="material-symbols-outlined text-[40px] text-on-surface-variant mb-2">cloud_upload</span>
                     <p class="text-body-md text-on-surface-variant">Click to upload or drag and drop</p>
                     <p class="text-body-sm text-on-surface-variant mt-1">PNG, JPG up to 5MB</p>
-                    <input type="file" id="editFoodImage" accept="image/*" class="hidden">
                 </div>
+                <input type="file" id="editFoodImage" accept="image/*" style="position:absolute;left:-9999px;">
                 <div id="editImagePreview" class="hidden mt-3 relative">
                     <img id="editPreviewImg" class="w-full h-40 object-cover rounded-lg" alt="Preview">
                     <button type="button" data-action="clear-edit-image" class="absolute top-2 right-2 w-7 h-7 rounded-full bg-error flex items-center justify-center text-on-error">
@@ -232,7 +233,68 @@ include __DIR__ . '/../layouts/header.php';
 
 <!-- ==================== END MODALS ==================== -->
 
+<!-- View Food Modal -->
+<div id="modal-food-view" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" data-action="close-modal-backdrop"></div>
+    <div class="relative bg-surface rounded-2xl border border-outline-variant w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-xl modal-content modal-enter">
+        <div class="flex items-center justify-between p-6 border-b border-outline-variant">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center">
+                    <span class="material-symbols-outlined text-on-primary">visibility</span>
+                </div>
+                <div>
+                    <h2 class="text-headline-md font-headline-md font-bold text-on-surface">Food Details</h2>
+                    <p class="text-label-caps font-label-caps text-on-surface-variant">View food item information</p>
+                </div>
+            </div>
+            <button data-action="close-modal" class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div id="foodViewLoading" class="p-12 flex items-center justify-center">
+            <span class="material-symbols-outlined animate-spin text-[32px] text-primary">progress_activity</span>
+        </div>
+        <div id="foodViewContent" class="hidden">
+            <div class="p-6">
+                <div id="viewFoodNoImage" class="w-full h-48 rounded-xl bg-surface-container-high flex items-center justify-center mb-4">
+                    <span class="material-symbols-outlined text-[48px] text-on-surface-variant">image</span>
+                </div>
+                <img id="viewFoodImage" class="w-full h-48 rounded-xl object-cover mb-4 hidden" alt="Food Image">
+                <div class="space-y-4">
+                    <div>
+                        <p class="text-label-caps font-label-caps text-on-surface-variant mb-1">Food Name</p>
+                        <p id="viewFoodName" class="text-headline-sm font-headline-sm font-bold text-on-surface">-</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-label-caps font-label-caps text-on-surface-variant mb-1">Category</p>
+                            <p id="viewFoodCategory" class="text-body-md text-on-surface">-</p>
+                        </div>
+                        <div>
+                            <p class="text-label-caps font-label-caps text-on-surface-variant mb-1">Price</p>
+                            <p id="viewFoodPrice" class="text-body-md font-semibold text-on-surface">-</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-label-caps font-label-caps text-on-surface-variant mb-1">Status</p>
+                        <div id="viewFoodStatus">-</div>
+                    </div>
+                    <div>
+                        <p class="text-label-caps font-label-caps text-on-surface-variant mb-1">Description</p>
+                        <p id="viewFoodDesc" class="text-body-md text-on-surface-variant leading-relaxed">-</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-end p-6 border-t border-outline-variant">
+                <button type="button" data-action="close-modal" class="py-2.5 px-6 bg-surface-container-high text-on-surface-variant rounded-lg font-semibold hover:bg-surface-container-highest transition-colors">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?php include __DIR__ . '/../layouts/footer.php'; ?>
+
+<script src="../../assets/js/food.js"></script>
 
 <script>
     $('#foodCreateForm').on('submit', function(e) {

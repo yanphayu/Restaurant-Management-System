@@ -1,30 +1,21 @@
+<?php
 
-<?php 
-
-$username = "root";
-$password = "1234";
-
+$host = "localhost";
 $dbname = "rms_mid";
-$host   = "localhost";
+$username = "root";
+$password = "Horng160806";
 
-$dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
+try {
 
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,      
-    PDO::ATTR_EMULATE_PREPARES   => false,                 
-];
+    $pdo = new PDO(
+        "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
+        $username,
+        $password
+    );
 
-$pdo = null;
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-try 
-{
-    $pdo = new PDO($dsn,$username,$password,$options);
-} 
-catch (PDOException $e) 
-{
-    error_log($e->getMessage()); 
-    die("Database connection error. Please try again later."); 
+} catch(PDOException $e) {
+
+    die($e->getMessage());
 }
-
-?>
