@@ -65,7 +65,25 @@ include __DIR__ . '/../layouts/header.php';
         </div>
         <form id="categoryCreateForm" class="p-6 space-y-5">
             <div><label class="text-label-caps font-label-caps text-on-surface-variant block mb-2">Category Name</label>
-                <input type="text" id="createCatName" required class="w-full py-3 px-4 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="Enter category name">
+                <select id="createCatName" required class="w-full py-3 px-4 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                    <option value="">Select a category</option>
+                    <option value="Appetizers">Appetizers</option>
+                    <option value="Main Course">Main Course</option>
+                    <option value="Desserts">Desserts</option>
+                    <option value="Beverages">Beverages</option>
+                    <option value="Soups">Soups</option>
+                    <option value="Salads">Salads</option>
+                    <option value="Seafood">Seafood</option>
+                    <option value="Grilled">Grilled</option>
+                    <option value="Pasta">Pasta</option>
+                    <option value="Pizza">Pizza</option>
+                    <option value="Burgers">Burgers</option>
+                    <option value="Sushi">Sushi</option>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Kids Menu">Kids Menu</option>
+                    <option value="Sides">Sides</option>
+                    <option value="Specials">Specials</option>
+                </select>
             </div>
             <div><label class="text-label-caps font-label-caps text-on-surface-variant block mb-3">Icon</label>
                 <div id="createIconGrid" class="grid grid-cols-8 gap-2"></div>
