@@ -13,14 +13,13 @@
 
         <!-- Right Actions -->
         <div class="flex items-center gap-2">
-            <!-- Notifications -->
-            <button class="relative p-2 rounded-lg hover:bg-surface-container-highest transition-colors" title="Notifications">
-                <span class="material-symbols-outlined text-on-surface-variant text-xl">notifications</span>
-                <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span>
-            </button>
             <!-- Settings -->
             <button class="p-2 rounded-lg hover:bg-surface-container-highest transition-colors" title="Settings">
                 <span class="material-symbols-outlined text-on-surface-variant text-xl">settings</span>
+            </button>
+            <!-- Logout -->
+            <button id="logoutBtn" data-action="logout" class="p-2 rounded-lg hover:bg-surface-container-highest transition-colors" title="Logout">
+                <span class="material-symbols-outlined text-on-surface-variant text-xl">logout</span>
             </button>
             <!-- User Avatar -->
             <div class="flex items-center gap-2 ml-2 pl-2 border-l border-outline-variant/50">

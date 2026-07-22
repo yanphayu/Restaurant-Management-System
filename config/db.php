@@ -1,4 +1,3 @@
-
 <?php 
 
 $username = "root";
@@ -14,17 +13,13 @@ $options = [
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,      
     PDO::ATTR_EMULATE_PREPARES   => false,                 
 ];
-
-$pdo = null;
-
 try 
 {
     $pdo = new PDO($dsn,$username,$password,$options);
 } 
 catch (PDOException $e) 
 {
-    error_log($e->getMessage()); 
-    die("Database connection error. Please try again later."); 
+    http_response_code(500);
+    echo json_encode(['success' => false, 'message' => 'Database connection failed']);
+    exit;
 }
-
-?>

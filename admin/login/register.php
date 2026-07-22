@@ -11,6 +11,8 @@ $pageDepth = 2;
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
+    <script src="/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/js/auth.js"></script>
     <style>
         body {
             display: flex;

@@ -310,6 +310,7 @@ img { display: block; max-width: 100%; }
 .bg-primary-container { background-color: var(--primary-container); }
 .bg-primary-container\/30 { background-color: rgba(79, 70, 229, 0.3); }
 .bg-primary-container\/40 { background-color: rgba(79, 70, 229, 0.4); }
+.bg-primary-container\/50 { background-color: rgba(79, 70, 229, 0.5); }
 .bg-primary-container\/60 { background-color: rgba(79, 70, 229, 0.6); }
 .bg-secondary-fixed { background-color: var(--secondary-fixed); }
 .bg-secondary-fixed\/40 { background-color: rgba(218, 226, 253, 0.4); }
@@ -510,6 +511,15 @@ img { display: block; max-width: 100%; }
     .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .lg\:grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
+
+/* ══════════════════════════════════
+   MODAL
+   ══════════════════════════════════ */
+.hidden { display: none !important; }
+
+.modal-overlay-visible {
+    display: flex !important;
 }
 
 /* ══════════════════════════════════

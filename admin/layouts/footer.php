@@ -21,6 +21,27 @@
             if (action === 'close-modal') closeModal();
             else if (action === 'close-modal-backdrop') closeModal();
             else if (action === 'open-modal') openModal($(this).data('target'));
+            else if (action === 'logout') {
+                Swal.fire({
+                    title: 'Logout?',
+                    text: 'You will be signed out of your account.',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, logout'
+                }).then(function(result) {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: '/api/auth.php',
+                            method: 'POST',
+                            data: { action: 'logout' },
+                            dataType: 'json',
+                            success: function() {
+                                window.location.href = '/admin/login/login.php';
+                            }
+                        });
+                    }
+                });
+            }
         });
     </script>
 </body>

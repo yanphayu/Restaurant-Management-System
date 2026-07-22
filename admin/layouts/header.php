@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ' . str_repeat('../', $pageDepth) . 'admin/login/login.php');
+    exit;
+}
+
 if (!isset($pageDepth)) $pageDepth = 1;
 if (!isset($currentPage)) $currentPage = '';
 if (!isset($pageTitle)) $pageTitle = 'KitchenFlow';
@@ -15,6 +21,7 @@ $prefix = str_repeat('../', $pageDepth);
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet">
     <link rel="stylesheet" href="<?= $prefix ?>assets/css/style.css?v=<?= @filemtime(__DIR__ . '/../../assets/css/style.css') ?>">
     <script src="<?= $prefix ?>jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="min-h-screen bg-surface font-body-md text-on-surface">
 

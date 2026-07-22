@@ -80,9 +80,9 @@ include __DIR__ . '/../layouts/header.php';
             </div>
             <div><label class="text-label-caps font-label-caps text-on-surface-variant block mb-2">Status</label>
                 <select id="createTableStatus" class="w-full py-3 px-4 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
-                    <option value="available">Available</option>
-                    <option value="occupied">Occupied</option>
-                    <option value="reserved">Reserved</option>
+                    <option value="Available">Available</option>
+                    <option value="Occupied">Occupied</option>
+                    <option value="Reserved">Reserved</option>
                 </select>
             </div>
             <div class="flex items-center justify-end gap-3 pt-4 border-t border-outline-variant">
@@ -117,9 +117,9 @@ include __DIR__ . '/../layouts/header.php';
             </div>
             <div><label class="text-label-caps font-label-caps text-on-surface-variant block mb-2">Status</label>
                 <select id="editTableStatus" class="w-full py-3 px-4 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
-                    <option value="available">Available</option>
-                    <option value="occupied">Occupied</option>
-                    <option value="reserved">Reserved</option>
+                    <option value="Available">Available</option>
+                    <option value="Occupied">Occupied</option>
+                    <option value="Reserved">Reserved</option>
                 </select>
             </div>
             <div><label class="text-label-caps font-label-caps text-on-surface-variant block mb-3">Live Preview</label>
@@ -141,35 +141,5 @@ include __DIR__ . '/../layouts/header.php';
     </div>
 </div>
 
+<script src="<?= $prefix ?>assets/js/table.js"></script>
 <?php include __DIR__ . '/../layouts/footer.php'; ?>
-
-<script>
-    $('#tableCreateForm').on('submit', function(e) {
-        e.preventDefault();
-        saveTable();
-    });
-
-    $('#tableEditForm').on('submit', function(e) {
-        e.preventDefault();
-        saveTable();
-    });
-
-    $('#addTableBtn').on('click', function() {
-        openModal('modal-table-create');
-    });
-
-    function updateTablePreview() {
-        $('#editTablePreviewName').text($('#editTableName').val() || 'Table');
-        $('#editTablePreviewCap').text($('#editTableCapacity').val() || '0');
-        var st = $('#editTableStatus').val();
-        var sm = {available:{l:'Available',c:'bg-success-container text-on-success-container'},occupied:{l:'Occupied',c:'bg-error-container text-on-error-container'},reserved:{l:'Reserved',c:'bg-tertiary-container text-on-tertiary-container'}};
-        var s = sm[st] || sm.available;
-        var badge = $('#editTablePreviewStatus');
-        badge.text(s.l);
-        badge.attr('class', 'inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold ' + s.c);
-    }
-
-    $('#editTableName').on('input', updateTablePreview);
-    $('#editTableCapacity').on('input', updateTablePreview);
-    $('#editTableStatus').on('change', updateTablePreview);
-</script>
