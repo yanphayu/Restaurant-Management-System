@@ -1,12 +1,11 @@
 <?php
 header('Content-Type: application/json');
-session_start();
 require_once __DIR__ . '/../config/db.php';
-
 
 $action = $_POST['action'] ?? '';
 
 if ($action === 'login') {
+    session_start();
     $userName = trim($_POST['user_name'] ?? '');
     $password = $_POST['user_password'] ?? '';
 
@@ -28,7 +27,7 @@ if ($action === 'login') {
     $_SESSION['user_name'] = $user['user_name'];
     $_SESSION['user_role'] = $user['user_role'];
 
-    echo json_encode(['success' => true, 'message' => 'Login successful']);
+    echo json_encode(['success' => true, 'message' => 'Login successful', 'role' => $user['user_role']]);
     exit;
 }
 
@@ -41,22 +40,27 @@ if ($action === 'register') {
         exit;
     }
 
-    $stmt = $pdo->prepare('SELECT user_id FROM users WHERE user_name = ?');
-    $stmt->execute([$userName]);
-    if ($stmt->fetch()) {
-        echo json_encode(['success' => false, 'message' => 'Username already taken']);
-        exit;
+    try {
+        $stmt = $pdo->prepare('SELECT user_id FROM users WHERE user_name = ?');
+        $stmt->execute([$userName]);
+        if ($stmt->fetch()) {
+            echo json_encode(['success' => false, 'message' => 'Username already taken']);
+            exit;
+        }
+
+        $hashed = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $pdo->prepare('INSERT INTO users (user_name, user_password) VALUES (?, ?)');
+        $stmt->execute([$userName, $hashed]);
+
+        echo json_encode(['success' => true, 'message' => 'Account created successfully']);
+    } catch (PDOException $e) {
+        echo json_encode(['success' => false, 'message' => 'Database error: ' . $e->getMessage()]);
     }
-
-    $hashed = password_hash($password, PASSWORD_DEFAULT);
-    $stmt = $pdo->prepare('INSERT INTO users (user_name, user_password) VALUES (?, ?)');
-    $stmt->execute([$userName, $hashed]);
-
-    echo json_encode(['success' => true, 'message' => 'Account created successfully']);
     exit;
 }
 
 if ($action === 'logout') {
+    session_start();
     $_SESSION = [];
     session_destroy();
     echo json_encode(['success' => true]);

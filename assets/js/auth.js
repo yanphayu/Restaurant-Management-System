@@ -16,7 +16,12 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(res) {
                 if (res.success) {
-                    window.location.href = '/admin/dashboard.php';
+                    if (res.role === 'admin') {
+                        window.location.href = '/admin/dashboard.php';
+                    } else {
+                        Swal.fire({ icon: 'warning', title: 'Access Denied', text: 'Only admin can access the dashboard.' });
+                        $btn.prop('disabled', false).text('Sign In');
+                    }
                 } else {
                     Swal.fire({ icon: 'error', title: 'Login Failed', text: res.message });
                     $btn.prop('disabled', false).text('Sign In');
