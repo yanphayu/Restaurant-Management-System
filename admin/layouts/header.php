@@ -22,6 +22,7 @@ $prefix = str_repeat('../', $pageDepth);
     <link rel="stylesheet" href="<?= $prefix ?>assets/css/style.css?v=<?= @filemtime(__DIR__ . '/../../assets/css/style.css') ?>">
     <script src="<?= $prefix ?>jquery/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 </head>
 <body class="min-h-screen bg-surface font-body-md text-on-surface">
 

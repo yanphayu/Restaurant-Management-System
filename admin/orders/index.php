@@ -93,9 +93,4 @@ include __DIR__ . '/../layouts/header.php';
 </div>
 
 <?php include __DIR__ . '/../layouts/footer.php'; ?>
-
-<script>
-    $(document).on('click', '[data-action="print-receipt"]', function() {
-        window.print();
-    });
-</script>
+<script src="<?= $prefix ?>assets/js/orders.js"></script>

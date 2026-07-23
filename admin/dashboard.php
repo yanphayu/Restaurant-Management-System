@@ -20,10 +20,7 @@ include __DIR__ . '/layouts/header.php';
             <div class="w-10 h-10 rounded-xl bg-primary-container/60 flex items-center justify-center">
                 <span class="material-symbols-outlined text-on-primary-container text-xl">receipt_long</span>
             </div>
-            <span class="text-body-sm text-tertiary font-semibold bg-tertiary-container/20 px-2 py-0.5 rounded-full flex items-center gap-0.5">
-                <span class="material-symbols-outlined text-sm">trending_up</span>
-                12%
-            </span>
+            <span class="text-body-sm text-on-surface-variant font-semibold bg-surface-container-high px-2 py-0.5 rounded-full font-data-mono" id="todayOrders">0</span>
         </div>
         <p class="text-display-lg font-display-lg text-on-surface" id="metricTotalOrders">0</p>
         <p class="text-body-sm text-on-surface-variant mt-1">Total Orders</p>
@@ -34,10 +31,7 @@ include __DIR__ . '/layouts/header.php';
             <div class="w-10 h-10 rounded-xl bg-tertiary-container/20 flex items-center justify-center">
                 <span class="material-symbols-outlined text-tertiary text-xl">payments</span>
             </div>
-            <span class="text-body-sm text-tertiary font-semibold bg-tertiary-container/20 px-2 py-0.5 rounded-full flex items-center gap-0.5">
-                <span class="material-symbols-outlined text-sm">trending_up</span>
-                8%
-            </span>
+            <span class="text-body-sm text-on-surface-variant font-semibold bg-surface-container-high px-2 py-0.5 rounded-full font-data-mono" id="todayRevenue">$0</span>
         </div>
         <p class="text-display-lg font-display-lg text-on-surface" id="metricTotalRevenue">$0</p>
         <p class="text-body-sm text-on-surface-variant mt-1">Total Revenue</p>
@@ -70,25 +64,27 @@ include __DIR__ . '/layouts/header.php';
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
     <div class="lg:col-span-2 bg-surface-container-lowest rounded-xl border border-outline-variant/50 p-5">
         <div class="flex items-center justify-between mb-5">
-            <h2 class="text-title-sm font-title-sm text-on-surface">Quick Summary</h2>
-            <select class="text-body-sm bg-surface-container border border-outline-variant/50 rounded-lg px-3 py-1.5 text-on-surface-variant outline-none focus:border-primary cursor-pointer">
-                <option>This Week</option>
-                <option>This Month</option>
-                <option>This Year</option>
-            </select>
+            <h2 class="text-title-sm font-title-sm text-on-surface">Last 7 Days</h2>
         </div>
-        <div class="flex items-end gap-3 h-48 px-2" id="barChart">
-            <?php
-            $days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-            foreach ($days as $day):
-            ?>
-                <div class="flex-1 flex flex-col items-center gap-1">
-                    <div class="w-full bg-primary/20 rounded-t-lg relative group">
-                        <div class="absolute bottom-0 left-0 right-0 bg-primary rounded-t-lg transition-all duration-700" style="height: 0%" data-height="0%"></div>
-                    </div>
-                    <span class="text-xs text-on-surface-variant"><?= $day ?></span>
-                </div>
-            <?php endforeach; ?>
+        <div style="height: 260px;">
+            <canvas id="dailyChart"></canvas>
+        </div>
+    </div>
+
+    <div class="bg-surface-container-lowest rounded-xl border border-outline-variant/50 p-5">
+        <h2 class="text-title-sm font-title-sm text-on-surface mb-4">Order Status</h2>
+        <div style="height: 260px;">
+            <canvas id="statusChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- Top Foods + Performance -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+    <div class="lg:col-span-2 bg-surface-container-lowest rounded-xl border border-outline-variant/50 p-5">
+        <h2 class="text-title-sm font-title-sm text-on-surface mb-5">Top Selling Foods</h2>
+        <div style="height: 240px;">
+            <canvas id="topFoodsChart"></canvas>
         </div>
     </div>
 
@@ -142,7 +138,7 @@ include __DIR__ . '/layouts/header.php';
         <table class="w-full">
             <thead>
                 <tr class="border-b border-outline-variant/50 bg-surface-container">
-                    <th class="text-left px-5 py-3 text-label-caps font-label-caps text-on-surface-variant uppercase tracking-wider">Order ID</th>
+                    <th class="text-left px-5 py-3 text-label-caps font-label-caps text-on-surface-variant uppercase tracking-wider">Order</th>
                     <th class="text-left px-5 py-3 text-label-caps font-label-caps text-on-surface-variant uppercase tracking-wider">Table</th>
                     <th class="text-left px-5 py-3 text-label-caps font-label-caps text-on-surface-variant uppercase tracking-wider">Items</th>
                     <th class="text-left px-5 py-3 text-label-caps font-label-caps text-on-surface-variant uppercase tracking-wider">Status</th>
@@ -162,4 +158,5 @@ include __DIR__ . '/layouts/header.php';
     </div>
 </div>
 
+<script src="<?= $prefix ?>assets/js/dashboard.js"></script>
 <?php include __DIR__ . '/layouts/footer.php'; ?>

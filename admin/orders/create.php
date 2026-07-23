@@ -83,10 +83,4 @@ include __DIR__ . '/../layouts/header.php';
 </div>
 
 <?php include __DIR__ . '/../layouts/footer.php'; ?>
-
-<script>
-    $('#orderForm').on('submit', function(e) {
-        e.preventDefault();
-        submitOrder();
-    });
-</script>
+<script src="<?= $prefix ?>assets/js/orders-create.js"></script>

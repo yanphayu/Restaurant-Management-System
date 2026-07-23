@@ -9,6 +9,21 @@ $(document).ready(function () {
             selectDefaultIcon('createIconGrid', 'createSelectedIcon');
         }, 50);
     });
+
+    $('#createCatName').on('change', function() {
+        var name = $(this).val();
+        var map = {
+            'Appetizers': 'tapas', 'Main Course': 'dinner_dining', 'Desserts': 'cake',
+            'Beverages': 'local_bar', 'Soups': 'soup_kitchen', 'Salads': 'nutrition',
+            'Seafood': 'set_meal', 'Grilled': 'outdoor_grill', 'Pasta': 'ramen_dining',
+            'Pizza': 'local_pizza', 'Burgers': 'fastfood', 'Sushi': 'restaurant_menu',
+            'Breakfast': 'breakfast_dining', 'Kids Menu': 'icecream', 'Sides': 'egg_alt',
+            'Specials': 'star'
+        };
+        var icon = map[name] || 'restaurant';
+        $('#createSelectedIcon').val(icon);
+        selectDefaultIcon('createIconGrid', 'createSelectedIcon');
+    });
 });
 
 var categoryIcons = [

@@ -2,13 +2,16 @@
 <header class="sticky top-0 z-20 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/50">
     <div class="flex items-center justify-between px-6 py-3">
         <!-- Search -->
-        <div class="relative w-80">
+        <div class="relative w-80" id="globalSearch">
             <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-xl">search</span>
             <input
-                type="search"
+                type="text"
+                id="globalSearchInput"
                 placeholder="Search orders, foods, tables..."
                 class="w-full pl-10 pr-4 py-2 bg-surface-container border border-outline-variant/50 rounded-lg text-body-md text-on-surface placeholder:text-outline focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                autocomplete="off"
             >
+            <div id="searchDropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-surface-container-lowest rounded-xl border border-outline-variant/50 shadow-xl z-50 max-h-80 overflow-y-auto custom-scrollbar"></div>
         </div>
 
         <!-- Right Actions -->
