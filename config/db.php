@@ -23,3 +23,5 @@ catch (PDOException $e)
     echo json_encode(['success' => false, 'message' => 'Database connection failed']);
     exit;
 }
+
+?>

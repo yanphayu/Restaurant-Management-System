@@ -19,6 +19,7 @@ include __DIR__ . '/../layouts/header.php';
             <thead>
                 <tr class="border-b border-outline-variant bg-surface-container">
                     <th class="px-6 py-4 font-semibold text-on-surface-variant text-sm">ID</th>
+                    <th class="px-6 py-4 font-semibold text-on-surface-variant text-sm">Icon</th>
                     <th class="px-6 py-4 font-semibold text-on-surface-variant text-sm">Category Name</th>
                     <th class="px-6 py-4 font-semibold text-on-surface-variant text-sm">Created At</th>
                     <th class="px-6 py-4 font-semibold text-on-surface-variant text-sm text-right">Actions</th>
@@ -26,7 +27,7 @@ include __DIR__ . '/../layouts/header.php';
             </thead>
             <tbody id="categoriesTableBody" class="divide-y divide-outline-variant">
                 <tr>
-                    <td colspan="4" class="px-6 py-12 text-center text-on-surface-variant">Loading categories...</td>
+                    <td colspan="5" class="px-6 py-12 text-center text-on-surface-variant">Loading categories...</td>
                 </tr>
             </tbody>
         </table>
@@ -101,7 +102,11 @@ include __DIR__ . '/../layouts/header.php';
                 <div><label class="text-label-caps font-label-caps text-on-surface-variant block mb-2">Category Name</label>
                     <input type="text" id="editCatName" required class="w-full py-3 px-4 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="Enter category name">
                 </div>
-                <div><label class="text-label-caps font-label-caps text-on-surface-variant block mb-3">Preview</label>
+                <div><label class="text-label-caps font-label-caps text-on-surface-variant block mb-3">Icon</label>
+                    <div id="editIconGrid" class="grid grid-cols-8 gap-2"></div>
+                    <input type="hidden" id="editSelectedIcon" value="restaurant">
+                </div>
+                <div><label class="text-label-caps font-label-caps text-on-surface-variant block mb-2">Preview</label>
                     <div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-xl border border-outline-variant">
                         <div class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center"><span id="editCatPreviewIcon" class="material-symbols-outlined text-on-primary">restaurant</span></div>
                         <div>
@@ -120,6 +125,8 @@ include __DIR__ . '/../layouts/header.php';
 </div>
 
 <?php include __DIR__ . '/../layouts/footer.php'; ?>
+
+<script src="../../assets/js/categories.js"></script>
 
 <script>
     $('#categoryCreateForm').on('submit', function(e) {

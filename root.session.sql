@@ -28,6 +28,7 @@ CREATE TABLE restaurant_tables (
 CREATE TABLE categories (
     category_id INT PRIMARY KEY AUTO_INCREMENT,
     category_name VARCHAR(100) NOT NULL,
+    category_icon VARCHAR(50) DEFAULT 'restaurant',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
