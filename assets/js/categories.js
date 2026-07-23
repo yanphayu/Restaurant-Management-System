@@ -2,13 +2,20 @@ $(document).ready(function () {
     loadCategories();
     renderIconGrid('createIconGrid', 'createSelectedIcon');
     selectDefaultIcon('createIconGrid', 'createSelectedIcon');
+
+    $(document).on('click', '[data-target="modal-category-create"]', function() {
+        setTimeout(function() {
+            renderIconGrid('createIconGrid', 'createSelectedIcon');
+            selectDefaultIcon('createIconGrid', 'createSelectedIcon');
+        }, 50);
+    });
 });
 
 var categoryIcons = [
     'restaurant', 'bakery_dining', 'ramen_dining', 'local_pizza', 'lunch_dining',
     'kebab_dining', 'tapas', 'local_bar', 'icecream', 'cake',
     'set_meal', 'dinner_dining', 'egg', 'cooking', 'breakfast_dining',
-    'brunch_dining', 'outdoor_grill', 'chef', 'fastfood', 'soup_kitchen',
+    'brunch_dining', 'outdoor_grill', 'restaurant_menu', 'fastfood', 'soup_kitchen',
     'nutrition', 'egg_alt', 'flatware', 'liquor', 'wine_bar',
     'coffee', 'local_cafe', 'takeout_dining', 'delivery_dining', 'food_bank',
     'grains', 'mood', 'star', 'favorite', 'diamond',
@@ -23,9 +30,8 @@ function renderIconGrid(containerId, inputId) {
         var btn = $('<button>', {
             type: 'button',
             class: 'w-9 h-9 rounded-lg flex items-center justify-center border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all',
-            'data-icon': icon,
             html: '<span class="material-symbols-outlined text-lg">' + icon + '</span>'
-        });
+        }).attr('data-icon', icon);
         btn.on('click', function() {
             container.find('button').removeClass('border-primary bg-primary-container text-primary');
             $(this).addClass('border-primary bg-primary-container text-primary');
@@ -113,11 +119,11 @@ function loadPerformanceSummary(data) {
 
 function createCategory() {
 
-    var category_name = $('#createCatName').val().trim();
+    var category_name = $('#createCatName').val();
     var category_icon = $('#createSelectedIcon').val() || 'restaurant';
 
     if (!category_name) {
-        alert('Please enter a category name');
+        alert('Please select a category name');
         return;
     }
 
@@ -131,8 +137,7 @@ function createCategory() {
             if (response.success) {
                 closeModal();
                 $('#categoryCreateForm')[0].reset();
-                renderIconGrid('createIconGrid', 'createSelectedIcon');
-                selectDefaultIcon('createIconGrid', 'createSelectedIcon');
+                $('#createSelectedIcon').val('restaurant');
                 loadCategories();
             } else {
                 alert(response.message || 'Failed to create category');

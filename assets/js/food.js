@@ -98,8 +98,7 @@ function loadCategoryOptions() {
             if (response.success) {
                 var opts = '<option value="">Select a category</option>';
                 $.each(response.data, function (i, cat) {
-                    var icon = cat.category_icon || 'restaurant';
-                    opts += '<option value="' + cat.category_id + '">' + icon + ' | ' + cat.category_name + '</option>';
+                    opts += '<option value="' + cat.category_id + '">' + cat.category_name + '</option>';
                 });
                 $('#createFoodCategory').html(opts);
                 $('#editFoodCategory').html(opts);
