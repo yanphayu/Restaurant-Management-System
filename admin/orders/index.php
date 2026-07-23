@@ -83,10 +83,10 @@ include __DIR__ . '/../layouts/header.php';
             <div class="flex items-center justify-center py-12"><span class="material-symbols-outlined animate-spin text-[32px] text-primary">progress_activity</span></div>
         </div>
         <div id="orderDetailFooter" class="hidden flex items-center justify-between p-6 border-t border-outline-variant">
-            <button data-action="close-modal" class="py-2.5 px-6 bg-surface-container-high text-on-surface-variant rounded-lg font-semibold flex items-center gap-2 hover:bg-surface-container-highest transition-colors"><span class="material-symbols-outlined text-xl">arrow_back</span> <span class="text-label-caps font-label-caps">Back</span></button>
+            <button data-action="close-modal" class="py-2.5 px-5 bg-surface-container-high text-on-surface-variant rounded-xl font-semibold flex items-center gap-2 hover:bg-surface-container-highest transition-colors"><span class="material-symbols-outlined text-xl">arrow_back</span> <span class="text-label-caps font-label-caps">Back</span></button>
             <div class="flex items-center gap-3">
-                <button data-action="print-receipt" class="py-2.5 px-6 bg-surface-container-high text-on-surface-variant rounded-lg font-semibold flex items-center gap-2 hover:bg-surface-container-highest transition-colors"><span class="material-symbols-outlined text-xl">print</span> <span class="text-label-caps font-label-caps">Print Receipt</span></button>
-                <button id="reorderBtn" class="py-2.5 px-6 bg-primary text-on-primary rounded-lg font-semibold flex items-center gap-2 hover:opacity-90 transition-opacity"><span class="material-symbols-outlined text-xl">replay</span> <span class="text-label-caps font-label-caps">Reorder</span></button>
+                <button data-action="print-receipt" class="py-2.5 px-5 bg-surface-container-high text-on-surface-variant rounded-xl font-semibold flex items-center gap-2 hover:bg-surface-container-highest transition-colors"><span class="material-symbols-outlined text-xl">print</span> <span class="text-label-caps font-label-caps">Print Receipt</span></button>
+                <button id="reorderBtn" class="py-2.5 px-5 bg-primary text-on-primary rounded-xl font-semibold flex items-center gap-2 hover:opacity-90 transition-opacity"><span class="material-symbols-outlined text-xl">replay</span> <span class="text-label-caps font-label-caps">Reorder</span></button>
             </div>
         </div>
     </div>

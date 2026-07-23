@@ -1,7 +1,7 @@
 <?php 
 
 $username = "root";
-$password = "1234";
+$password = "Horng160806";
 
 $dbname = "rms_mid";
 $host   = "localhost";

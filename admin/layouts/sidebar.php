@@ -4,7 +4,7 @@
     <div class="px-6 py-5 border-b border-outline-variant/50">
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center">
-                <span class="material-symbols-outlined text-on-primary-container">restaurant_menu</span>
+                <span class="material-symbols-outlined text-on-primary-container">local_dining</span>
             </div>
             <div>
                 <h1 class="text-title-sm font-title-sm text-on-surface">KitchenFlow</h1>
@@ -39,7 +39,7 @@
 
     <!-- Quick Order Button -->
     <div class="px-3 pb-4">
-        <a href="<?= $prefix ?>admin/orders/create.php" class="w-full flex items-center justify-center gap-2 px-4 py-3 bg-primary text-on-primary rounded-xl font-semibold text-body-md hover:bg-primary-container transition-colors active:scale-[0.98]">
+        <a href="<?= $prefix ?>admin/orders/create.php" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-primary text-on-primary rounded-xl font-semibold text-body-md hover:opacity-90 transition-opacity active:scale-[0.98]">
             <span class="material-symbols-outlined text-xl">bolt</span>
             Quick Order
         </a>

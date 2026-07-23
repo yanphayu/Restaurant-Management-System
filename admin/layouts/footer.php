@@ -29,7 +29,7 @@
                 if (q.length < 2) { $dropdown.addClass('hidden').empty(); return; }
                 searchTimer = setTimeout(function() {
                     $.ajax({
-                        url: '/api/search.php',
+                        url: '<?= $prefix ?>api/search.php',
                         method: 'GET',
                         data: { q: q },
                         dataType: 'json',
@@ -102,12 +102,12 @@
                 }).then(function(result) {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: '/auth/auth.php',
+                            url: '<?= $prefix ?>auth/auth.php',
                             method: 'POST',
                             data: { action: 'logout' },
                             dataType: 'json',
                             success: function() {
-                                window.location.href = '/admin/login/login.php';
+                                window.location.href = '<?= $prefix ?>admin/login/login.php';
                             }
                         });
                     }

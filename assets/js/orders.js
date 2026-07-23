@@ -2,7 +2,7 @@ var allOrders = [];
 
 function loadOrders() {
     $.ajax({
-        url: '/api/order.php',
+        url: '../../api/order.php',
         method: 'GET',
         data: { action: 'get_all' },
         dataType: 'json',
@@ -48,8 +48,8 @@ function renderOrdersTable(orders) {
         html += '<td class="px-6 py-4 font-semibold text-on-surface">$' + parseFloat(o.total_amount).toFixed(2) + '</td>';
         html += '<td class="px-6 py-4"><span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold ' + badge + '">' + o.status + '</span></td>';
         html += '<td class="px-6 py-4 text-right"><div class="flex items-center justify-end gap-2">';
-        html += '<button onclick="viewOrder(' + o.order_id + ')" class="w-8 h-8 rounded-lg bg-primary-container/50 flex items-center justify-center text-on-primary hover:bg-primary-container transition-colors" title="View"><span class="material-symbols-outlined text-base">visibility</span></button>';
-        html += '<button onclick="deleteOrder(' + o.order_id + ')" class="w-8 h-8 rounded-lg bg-error-container/50 flex items-center justify-center text-on-error hover:bg-error-container transition-colors" title="Delete"><span class="material-symbols-outlined text-base">delete</span></button>';
+        html += '<button onclick="viewOrder(' + o.order_id + ')" class="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center text-purple-700 hover:bg-primary-container hover:text-primary transition-colors" title="View"><span class="material-symbols-outlined text-base">visibility</span></button>';
+        html += '<button onclick="deleteOrder(' + o.order_id + ')" class="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center text-red-700 hover:bg-error-container hover:text-error transition-colors" title="Delete"><span class="material-symbols-outlined text-base">delete</span></button>';
         html += '</div></td></tr>';
     });
     $('#ordersTableBody').html(html);
@@ -88,7 +88,7 @@ function viewOrder(id) {
     openModal('modal-order-detail');
 
     $.ajax({
-        url: '/api/order.php',
+        url: '../../api/order.php',
         method: 'GET',
         data: { action: 'get', id: id },
         dataType: 'json',
@@ -133,7 +133,7 @@ function viewOrder(id) {
             var statuses = ['Pending', 'Completed', 'Paid'];
             $.each(statuses, function(_, s) {
                 var active = s === o.status ? 'ring-2 ring-primary' : '';
-                html += '<button onclick="updateOrderStatus(' + o.order_id + ', \'' + s + '\')" class="px-4 py-2 rounded-lg text-sm font-semibold border border-outline-variant ' + active + ' hover:bg-surface-container-low transition-colors">' + s + '</button>';
+                html += '<button onclick="updateOrderStatus(' + o.order_id + ', \'' + s + '\')" class="px-4 py-2 rounded-xl text-sm font-semibold border border-outline-variant ' + active + ' hover:bg-surface-container-low transition-colors">' + s + '</button>';
             });
             html += '</div></div>';
 
@@ -148,7 +148,7 @@ function viewOrder(id) {
 
 function updateOrderStatus(id, status) {
     $.ajax({
-        url: '/api/order.php',
+        url: '../../api/order.php',
         method: 'POST',
         data: { action: 'update_status', order_id: id, status: status },
         dataType: 'json',
@@ -175,7 +175,7 @@ function deleteOrder(id) {
     }).then(function(result) {
         if (result.isConfirmed) {
             $.ajax({
-                url: '/api/order.php',
+                url: '../../api/order.php',
                 method: 'POST',
                 data: { action: 'delete', order_id: id },
                 dataType: 'json',

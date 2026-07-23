@@ -5,7 +5,7 @@ var topFoodsChart = null;
 
 function loadStats() {
     $.ajax({
-        url: '/api/dashboard.php',
+        url: '../api/dashboard.php',
         method: 'GET',
         data: { action: 'get_stats' },
         success: function(res) {
@@ -22,7 +22,7 @@ function loadStats() {
 
 function loadDailyChart() {
     $.ajax({
-        url: '/api/dashboard.php',
+        url: '../api/dashboard.php',
         method: 'GET',
         data: { action: 'get_daily' },
         success: function(res) {
@@ -86,7 +86,7 @@ function loadDailyChart() {
 
 function loadStatusChart() {
     $.ajax({
-        url: '/api/dashboard.php',
+        url: '../api/dashboard.php',
         method: 'GET',
         data: { action: 'get_status_breakdown' },
         success: function(res) {
@@ -126,7 +126,7 @@ function loadStatusChart() {
 
 function loadTop() {
     $.ajax({
-        url: '/api/dashboard.php',
+        url: '../api/dashboard.php',
         method: 'GET',
         data: { action: 'get_top' },
         success: function(res) {
@@ -198,7 +198,7 @@ function loadTop() {
 
 function loadRecent() {
     $.ajax({
-        url: '/api/dashboard.php',
+        url: '../api/dashboard.php',
         method: 'GET',
         data: { action: 'get_recent' },
         success: function(res) {

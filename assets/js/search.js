@@ -9,7 +9,7 @@ var searchTimer = null;
         if (q.length < 2) { $dropdown.addClass('hidden').empty(); return; }
         searchTimer = setTimeout(function() {
             $.ajax({
-                url: '/api/search.php',
+                url: '../../api/search.php',
                 method: 'GET',
                 data: { q: q },
                 success: function(res) {

@@ -74,7 +74,7 @@ include __DIR__ . '/../layouts/header.php';
                 </div>
             </div>
 
-            <button id="submitOrderBtn" type="submit" class="w-full py-3 px-4 bg-primary text-on-primary rounded-xl font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+            <button id="submitOrderBtn" type="submit" class="w-full py-2.5 px-5 bg-primary text-on-primary rounded-xl font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed" disabled>
                 <span class="material-symbols-outlined">send</span>
                 Submit Order
             </button>

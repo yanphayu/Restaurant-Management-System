@@ -93,8 +93,8 @@ include __DIR__ . '/../layouts/header.php';
                 <textarea id="createCatDesc" rows="3" class="w-full py-3 px-4 bg-surface-container-low border border-outline-variant rounded-lg text-body-md placeholder:text-on-surface-variant resize-none focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="Describe this category..."></textarea>
             </div>
             <div class="flex items-center justify-end gap-3 pt-4 border-t border-outline-variant">
-                <button type="button" data-action="close-modal" class="py-2.5 px-6 bg-surface-container-high text-on-surface-variant rounded-lg font-semibold hover:bg-surface-container-highest transition-colors">Cancel</button>
-                <button type="submit" class="py-2.5 px-6 bg-primary text-on-primary rounded-lg font-semibold flex items-center gap-2 hover:opacity-90 transition-opacity"><span class="material-symbols-outlined text-xl">add</span> <span class="text-label-caps font-label-caps">Create Category</span></button>
+                <button type="button" data-action="close-modal" class="py-2.5 px-5 bg-surface-container-high text-on-surface-variant rounded-xl font-semibold hover:bg-surface-container-highest transition-colors">Cancel</button>
+                <button type="submit" class="py-2.5 px-5 bg-primary text-on-primary rounded-xl font-semibold flex items-center gap-2 hover:opacity-90 transition-opacity"><span class="material-symbols-outlined text-xl">add</span> <span class="text-label-caps font-label-caps">Create Category</span></button>
             </div>
         </form>
     </div>
@@ -135,8 +135,8 @@ include __DIR__ . '/../layouts/header.php';
                 </div>
             </div>
             <div id="catEditFooter" class="hidden flex items-center justify-end gap-3 p-6 border-t border-outline-variant">
-                <button type="button" data-action="close-modal" class="py-2.5 px-6 bg-surface-container-high text-on-surface-variant rounded-lg font-semibold hover:bg-surface-container-highest transition-colors">Cancel</button>
-                <button type="submit" class="py-2.5 px-6 bg-primary text-on-primary rounded-lg font-semibold flex items-center gap-2 hover:opacity-90 transition-opacity"><span class="material-symbols-outlined text-xl">check</span> <span class="text-label-caps font-label-caps">Confirm</span></button>
+                <button type="button" data-action="close-modal" class="py-2.5 px-5 bg-surface-container-high text-on-surface-variant rounded-xl font-semibold hover:bg-surface-container-highest transition-colors">Cancel</button>
+                <button type="submit" class="py-2.5 px-5 bg-primary text-on-primary rounded-xl font-semibold flex items-center gap-2 hover:opacity-90 transition-opacity"><span class="material-symbols-outlined text-xl">check</span> <span class="text-label-caps font-label-caps">Confirm</span></button>
             </div>
         </form>
     </div>

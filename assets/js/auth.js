@@ -6,7 +6,7 @@ $(document).ready(function() {
         $btn.prop('disabled', true).text('Signing in...');
 
         $.ajax({
-            url: '/auth/auth.php',
+            url: '../../auth/auth.php',
             method: 'POST',
             data: {
                 action: 'login',
@@ -17,7 +17,7 @@ $(document).ready(function() {
             success: function(res) {
                 if (res.success) {
                     if (res.role === 'admin') {
-                        window.location.href = '/admin/dashboard.php';
+                        window.location.href = '../../admin/dashboard.php';
                     } else {
                         Swal.fire({ icon: 'warning', title: 'Access Denied', text: 'Only admin can access the dashboard.' });
                         $btn.prop('disabled', false).text('Sign In');
@@ -48,7 +48,7 @@ $(document).ready(function() {
         $btn.prop('disabled', true).text('Creating account...');
 
         $.ajax({
-            url: '/auth/auth.php',
+            url: '../../auth/auth.php',
             method: 'POST',
             data: {
                 action: 'register',

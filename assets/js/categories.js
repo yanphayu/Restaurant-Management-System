@@ -93,10 +93,10 @@ function loadCategories() {
                         '<td class="px-6 py-4">' + category.created_at + '</td>' +
                         '<td class="px-6 py-4 text-right">' +
                         '<div class="flex items-center justify-end gap-1">' +
-                        '<button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-primary-container hover:text-primary transition-colors" onclick="editCategory(' + category.category_id + ')" title="Edit">' +
+                        '<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-blue-100 text-blue-700 hover:bg-primary-container hover:text-primary transition-colors" onclick="editCategory(' + category.category_id + ')" title="Edit">' +
                         '<span class="material-symbols-outlined text-lg">edit</span>' +
                         '</button>' +
-                        '<button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-error-container hover:text-error transition-colors" onclick="deleteCategory(' + category.category_id + ')" title="Delete">' +
+                        '<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-red-100 text-red-700 hover:bg-error-container hover:text-error transition-colors" onclick="deleteCategory(' + category.category_id + ')" title="Delete">' +
                         '<span class="material-symbols-outlined text-lg">delete</span>' +
                         '</button>' +
                         '</div>' +

@@ -49,8 +49,8 @@ if ($action === 'register') {
         }
 
         $hashed = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $pdo->prepare('INSERT INTO users (user_name, user_password) VALUES (?, ?)');
-        $stmt->execute([$userName, $hashed]);
+        $stmt = $pdo->prepare('INSERT INTO users (user_name, user_password, user_role) VALUES (?, ?, ?)');
+        $stmt->execute([$userName, $hashed, 'admin']);
 
         echo json_encode(['success' => true, 'message' => 'Account created successfully']);
     } catch (PDOException $e) {

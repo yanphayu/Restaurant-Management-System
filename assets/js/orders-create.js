@@ -4,7 +4,7 @@ var activeCategory = 'all';
 
 function loadFormData() {
     $.ajax({
-        url: '/api/order.php',
+        url: '../../api/order.php',
         method: 'GET',
         data: { action: 'get_foods' },
         dataType: 'json',
@@ -17,7 +17,7 @@ function loadFormData() {
     });
 
     $.ajax({
-        url: '/api/order.php',
+        url: '../../api/order.php',
         method: 'GET',
         data: { action: 'get_categories' },
         dataType: 'json',
@@ -27,7 +27,7 @@ function loadFormData() {
     });
 
     $.ajax({
-        url: '/api/order.php',
+        url: '../../api/order.php',
         method: 'GET',
         data: { action: 'get_tables' },
         dataType: 'json',
@@ -61,7 +61,7 @@ function renderFoods(foods) {
     $.each(foods, function(_, f) {
         html += '<div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-xl border border-outline-variant/50 hover:border-primary/50 transition-colors">';
         if (f.food_image) {
-            html += '<img src="/uploads/' + f.food_image + '" style="width:64px;height:64px;border-radius:8px;object-fit:cover" class="shrink-0" alt="' + f.food_name + '">';
+            html += '<img src="../../uploads/' + f.food_image + '" style="width:64px;height:64px;border-radius:8px;object-fit:cover" class="shrink-0" alt="' + f.food_name + '">';
         } else {
             html += '<div style="width:64px;height:64px;border-radius:8px" class="bg-surface-container-high flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-surface-variant">restaurant</span></div>';
         }
@@ -175,7 +175,7 @@ function submitOrder() {
     $btn.prop('disabled', true).text('Submitting...');
 
     $.ajax({
-        url: '/api/order.php',
+        url: '../../api/order.php',
         method: 'POST',
         data: {
             action: 'create',

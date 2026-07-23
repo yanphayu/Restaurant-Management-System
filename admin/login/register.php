@@ -11,9 +11,9 @@ $pageDepth = 2;
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <script src="/jquery/dist/jquery.min.js"></script>
+    <script src="../../jquery/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/assets/js/auth.js"></script>
+    <script src="../../assets/js/auth.js"></script>
     <style>
         body {
             display: flex;
@@ -49,7 +49,7 @@ $pageDepth = 2;
                     <label class="text-label-caps font-label-caps text-on-surface-variant block mb-2">Confirm Password</label>
                     <input type="password" id="registerConfirmPassword" required class="w-full py-3 px-4 bg-surface-container-low border border-outline-variant rounded-lg text-body-md placeholder:text-on-surface-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="Confirm your password">
                 </div>
-                <button type="submit" class="w-full py-3 px-4 bg-primary text-on-primary rounded-xl font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+                <button type="submit" class="w-full py-2.5 px-5 bg-primary text-on-primary rounded-xl font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
                     <span class="material-symbols-outlined">person_add</span>
                     Create Account
                 </button>

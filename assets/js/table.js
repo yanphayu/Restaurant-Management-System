@@ -13,7 +13,7 @@ var currentTableId = null;
 
 function loadTables() {
     $.ajax({
-        url: '/api/table.php',
+        url: '../../api/table.php',
         method: 'GET',
         data: { action: 'get_all' },
         dataType: 'json',
@@ -55,8 +55,8 @@ function renderTableBody(tables) {
         html += '<td class="px-6 py-4 text-on-surface-variant">' + t.capacity + ' seats</td>';
         html += '<td class="px-6 py-4"><span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold ' + badge + '">' + label + '</span></td>';
         html += '<td class="px-6 py-4 text-right"><div class="flex items-center justify-end gap-2">';
-        html += '<button onclick="editTable(' + t.table_id + ')" class="w-8 h-8 rounded-lg bg-primary-container/50 flex items-center justify-center text-on-primary hover:bg-primary-container transition-colors" title="Edit"><span class="material-symbols-outlined text-base">edit</span></button>';
-        html += '<button onclick="deleteTable(' + t.table_id + ')" class="w-8 h-8 rounded-lg bg-error-container/50 flex items-center justify-center text-on-error hover:bg-error-container transition-colors" title="Delete"><span class="material-symbols-outlined text-base">delete</span></button>';
+        html += '<button onclick="editTable(' + t.table_id + ')" class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-700 hover:bg-primary-container hover:text-primary transition-colors" title="Edit"><span class="material-symbols-outlined text-base">edit</span></button>';
+        html += '<button onclick="deleteTable(' + t.table_id + ')" class="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center text-red-700 hover:bg-error-container hover:text-error transition-colors" title="Delete"><span class="material-symbols-outlined text-base">delete</span></button>';
         html += '</div></td></tr>';
     });
     $('#tablesTableBody').html(html);
@@ -98,7 +98,7 @@ function saveTable() {
     };
 
     $.ajax({
-        url: '/api/table.php',
+        url: '../../api/table.php',
         method: 'POST',
         data: data,
         dataType: 'json',
@@ -121,7 +121,7 @@ function saveTable() {
 function editTable(id) {
     currentTableId = id;
     $.ajax({
-        url: '/api/table.php',
+        url: '../../api/table.php',
         method: 'GET',
         data: { action: 'get', id: id },
         dataType: 'json',
@@ -151,7 +151,7 @@ function deleteTable(id) {
     }).then(function(result) {
         if (result.isConfirmed) {
             $.ajax({
-                url: '/api/table.php',
+                url: '../../api/table.php',
                 method: 'POST',
                 data: { action: 'delete', table_id: id },
                 dataType: 'json',
